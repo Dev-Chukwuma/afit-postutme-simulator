@@ -1,0 +1,124 @@
+{% extends 'simulator/base.html' %}
+{% block title %}Result - AFIT Simulator{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 0 auto;">
+
+    <!-- Header -->
+    <div class="text-center mb-24">
+        <h1>Exam Complete 🎉</h1>
+
+        <p class="mt-8">Here's how you performed</p>
+    </div>
+
+    <!-- Score Card -->
+    <div class="card card-glow text-center" style="margin-bottom: 20px; padding: 48px 32px;">
+
+        <p class="text-muted text-sm mb-8">Your Aggregate Score</p>
+        <div style="font-size: 5rem; font-weight: 800; color: var(--blue-light); line-height: 1;">
+            {{ result.aggregate }}
+        </div>
+        <p class="text-muted mt-8" style="font-size: 1rem;">out of 100</p>
+
+        <div style="margin: 32px 0; height: 1px; background: var(--border);"></div>
+
+
+        <!-- Score Breakdown -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+            <div>
+                <p class="text-muted text-sm">JAMB Score</p>
+                <p style="font-size: 1.6rem; font-weight: 800; color: var(--text); margin-top: 6px;">{{ profile.jamb_score }}</p>
+                <p class="text-muted text-sm">÷ 8 = {{ profile.jamb_score|divisibleby:8 }}</p>
+            </div>
+            <div style="border-left: 1px solid var(--border); border-right: 1px solid var(--border);">
+                <p class="text-muted text-sm">Post-UTME</p>
+                <p style="font-size: 1.6rem; font-weight: 800; color: var(--text); margin-top: 6px;">{{ result.postutme_score }}</p>
+
+                <p class="text-muted text-sm">out of 50</p>
+            </div>
+            <div>
+                <p class="text-muted text-sm">Aggregate</p>
+                <p style="font-size: 1.6rem; font-weight: 800; color: var(--blue-light); margin-top: 6px;">{{ result.aggregate }}</p>
+                <p class="text-muted text-sm">out of 100</p>
+            </div>
+        </div>
+
+        <div style="margin: 32px 0; height: 1px; background: var(--border);"></div>
+
+        <!-- Performance Badge -->
+        {% if result.aggregate >= 70 %}
+            <span class="badge badge-green" style="font-size: 0.9rem; padding: 8px 
+
+20px;">
+                🔥 Excellent Performance
+            </span>
+        {% elif result.aggregate >= 60 %}
+            <span class="badge badge-blue" style="font-size: 0.9rem; padding: 8px 20px;">
+                👍 Good Performance
+            </span>
+        {% elif result.aggregate >= 50 %}
+            <span class="badge" style="background: rgba(251,191,36,0.1); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); font-size: 0.9rem; padding: 8px 20px;">
+                💪 Keep Practicing
+            </span>
+        {% else %}
+            <span class="badge badge-red" style="font-size: 0.9rem; padding: 8px 20px;">
+
+                📚 Needs Improvement
+            </span>
+        {% endif %}
+
+    </div>
+
+    <!-- Candidate Info -->
+    <div class="card" style="margin-bottom: 20px;">
+        <h2 class="mb-16">Candidate Details</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div>
+                <p class="text-muted text-sm">Full Name</p>
+                <p class="font-bold mt-8">{{ profile.full_name }}</p>
+            </div>
+            <div>
+                <p class="text-muted text-
+
+sm">Aspiring Course</p>
+                <p class="font-bold mt-8">{{ profile.aspiring_course }}</p>
+            </div>
+            <div>
+                <p class="text-muted text-sm">Date Taken</p>
+                <p class="font-bold mt-8">{{ result.date_taken|date:"d M Y • g:i A" }}</p>
+            </div>
+            <div>
+                <p class="text-muted text-sm">Username</p>
+                <p class="font-bold mt-8">@{{ profile.user.username }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex gap-10" style="margin-top: 8px;">
+        <a href="/download/{{ result.id }}/" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">
+            ⬇ Download Result
+        </a>
+        <a href="/exam/" class="btn btn-outline btn-lg" style="flex: 1; text-align: center;">
+            Retry Exam
+        </a>
+       
+        <div class="flex gap-10" style="margin-top: 8px;">
+    <a href="/review/{{ result.id }}/" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">
+        📋 Review Answers
+    </a>
+  
+  
+</div>
+    </div>
+
+</div>
+
+<script>
+        // Auto trigger download after 2 seconds
+    setTimeout(() => {
+        window.location.href = "/download/{{ result.id }}/";
+    }, 2000);
+</script>
+
+{% endblock %}

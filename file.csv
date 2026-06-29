@@ -1,0 +1,201 @@
+subject,question_text,option_a,option_b,option_c,option_d,correct_answer,order
+Mathematics,"If 3x - 7 = 20, find x.",7,8,9,10,C,0
+Mathematics,"Solve: x² - 5x + 6 = 0.",x=2 or 3,x=-2 or -3,x=1 or 6,x=-1 or -6,A,1
+Mathematics,"Evaluate log₁₀2 + log₁₀5.",0.3010,0.6990,1.0000,1.3010,C,2
+Mathematics,"A trader bought an item for ₦8,000 and sold it for ₦9,200. Find the percentage profit.",10%,12%,15%,20%,C,3
+Mathematics,"The ratio of boys to girls is 5:3. If there are 24 students, how many are girls?",8,9,10,12,B,4
+Mathematics,"Find sin 30°.",0,1/2,√3/2,1,B,5
+Mathematics,"A car travels 180 km in 3 hours. Find its average speed.",50 km/h,55 km/h,60 km/h,65 km/h,C,6
+Mathematics,"Find the mean of 6, 8, 10, 12 and 14.",9,10,11,12,B,7
+Mathematics,"If P(E)=0.25, find P(E').",0.25,0.50,0.75,1.00,C,8
+Mathematics,"The sum of the interior angles of a hexagon is:",540°,720°,900°,1080°,B,9
+Mathematics,"Simplify (2³ × 2⁴).",32,64,128,256,C,10
+Mathematics,"If y varies directly as x and y=18 when x=6, find y when x=10.",24,28,30,36,C,11
+Mathematics,"Factorize x² + 7x + 12.",(x+3)(x+4),(x+2)(x+6),(x+1)(x+12),(x+5)(x+2),A,12
+Mathematics,"Evaluate √225.",12,13,14,15,D,13
+Mathematics,"Convert 45% to a fraction.",9/20,4/5,5/9,45/100,A,14
+Mathematics,"The perimeter of a rectangle is 50 cm. If the length is 15 cm, find the width.",8 cm,10 cm,12 cm,15 cm,B,15
+Mathematics,"If tan θ = 1, θ is:",30°,45°,60°,90°,B,16
+Mathematics,"What is the median of 2, 4, 6, 8, 10?",4,5,6,7,C,17
+Mathematics,"Find the value of 5!.",60,100,120,125,C,18
+Mathematics,"Solve: 2x + 5 = 17.",5,6,7,8,B,19
+Mathematics,"If x² = 81, the possible values of x are:",9 only,-9 only,9 and -9,0,C,20
+Mathematics,"Simplify (3² × 3⁴) ÷ 3³.",3,9,27,81,C,21
+Mathematics,"If 4x - 5 = 19, find x.",4,5,6,7,C,22
+Mathematics,"Solve the simultaneous equations: x + y = 9 and x - y = 3.",x=5,y=4,x=6,y=3,x=4,y=5,x=3,y=6,B,23
+Mathematics,"The nth term of the sequence 3, 6, 9, 12,... is:",2n,3n,n+3,3n+1,B,24
+Mathematics,"Find the value of cos 60°.",0,1/2,√3/2,1,B,25
+Mathematics,"Evaluate 7² - 5².",20,22,24,26,C,26
+Mathematics,"A bag contains 5 red and 3 blue balls. What is the probability of picking a blue ball?",3/8,5/8,1/2,2/3,A,27
+Mathematics,"If the simple interest on ₦5,000 at 8% per annum for 2 years is:",₦600,₦700,₦800,₦900,C,28
+Mathematics,"The gradient of the line joining (2,3) and (6,11) is:",1,2,3,4,B,29
+Mathematics,"Find the HCF of 24 and 36.",6,8,12,18,C,30
+Mathematics,"Evaluate (2x + 3) when x = 4.",9,10,11,12,C,31
+Mathematics,"The area of a circle of radius 7 cm is (Take π = 22/7):",144 cm²,154 cm²,164 cm²,176 cm²,B,32
+Mathematics,"Convert 0.625 to a fraction.",1/2,5/8,3/4,7/8,B,33
+Mathematics,"If log₁₀100 = x, then x =",1,2,10,100,B,34
+Mathematics,"The exterior angle of a regular hexagon is:",30°,45°,60°,90°,C,35
+Mathematics,"Differentiate x³ with respect to x.",x²,2x,3x²,3x,C,36
+Mathematics,"Evaluate ∫4 dx.",2x,4x,C,x² + C,4x + C,D,37
+Mathematics,"If tan θ = 3/4, then the opposite side is:",3,4,5,7,A,38
+Mathematics,"The range of the data 5, 8, 12, 20, 25 is:",15,18,20,25,C,39
+Mathematics,"If f(x)=2x+3, find f(5).",11,12,13,14,C,40
+Mathematics,"In a class of 40 students, 24 offer Mathematics, 18 offer Physics and 10 offer both. How many offer neither subject?",6,8,10,12,B,41
+Mathematics,"Express the binary number 1011₂ in base ten.",9,10,11,13,C,42
+Mathematics,"The bearing of B from A is 135°. What is the bearing of A from B?",225°,270°,315°,045°,C,43
+Mathematics,"The volume of a cube of side 5 cm is:",25 cm³,75 cm³,100 cm³,125 cm³,D,44
+Mathematics,"Find the roots of x² − 9 = 0.",±3,±9,3 only,-3 only,A,45
+Mathematics,"A student scored 65, 70, 80 and 85 in four tests. What is the average score?",72.5,75,77.5,80,B,46
+Mathematics,"If two fair dice are thrown, what is the probability of obtaining a sum of 7?",1/12,1/9,1/6,5/36,C,47
+Mathematics,"The distance between the points (2,3) and (2,9) is:",4,5,6,7,C,48
+Mathematics,"If sin θ = 4/5 where θ is acute, find cos θ.",1/5,2/5,3/5,4/5,C,49
+English,"Choose the option nearest in meaning to the word 'Diligent'.",Lazy,Hardworking,Careless,Weak,B,0
+English,"Choose the option opposite in meaning to 'Scarcity'.",Lack,Abundance,Famine,Shortage,B,1
+English,"The principal, together with the teachers, _____ present.",were,are,is,have been,C,2
+English,"Choose the correctly spelt word.",Occassion,Occasion,Ocassion,Ocassionn,B,3
+English,"Complete the sentence: If I _____ you, I would apologize immediately.",am,was,were,be,C,4
+English,"Choose the word that best completes the sentence: The chairman was accused _____ corruption.",for,with,of,by,C,5
+English,"Choose the synonym of 'Candid'.",Honest,Rude,Clever,Angry,A,6
+English,"Choose the antonym of 'Expand'.",Increase,Stretch,Reduce,Enlarge,C,7
+English,"Identify the correctly punctuated sentence.",Lets eat Grandma,Let's eat Grandma.,Lets eat, Grandma.,Let's eat, Grandma.,D,8
+English,"The idiom 'once in a blue moon' means:",Frequently,Rarely,Immediately,Never,B,9
+English,"Choose the word that best completes the sentence: She has lived here _____ 2018.",for,since,from,by,B,10
+English,"Choose the synonym of 'Obtain'.",Lose,Acquire,Reject,Forget,B,11
+English,"The meeting was postponed _____ next week.",to,for,until,at,A,12
+English,"Choose the antonym of 'Permanent'.",Lasting,Temporary,Endless,Stable,B,13
+English,"Neither John nor his brothers _____ at home.",is,was,are,has been,C,14
+English,"Choose the correctly spelt word.",Accomodate,Accommodate,Acommodate,Acommoddate,B,15
+English,"Complete the sentence: The teacher advised the students _____ harder.",study,to study,studying,studied,B,16
+English,"Choose the word nearest in meaning to 'Reluctant'.",Willing,Hesitant,Cheerful,Confident,B,17
+English,"The opposite of 'Ancient' is:",Old,Historic,Modern,Traditional,C,18
+English,"Choose the most appropriate word: The manager spoke _____ during the interview.",confidence,confident,confidently,confidences,C,19
+English,"Choose the word nearest in meaning to 'Eloquent'.",Silent,Persuasive,Timid,Confused,B,20
+English,"Choose the opposite in meaning to 'Generous'.",Kind,Selfish,Friendly,Patient,B,21
+English,"Complete the sentence: By this time tomorrow, we _____ the examination.",finish,will finish,will have finished,have finished,C,22
+English,"Choose the correctly spelt word.",Pronounciation,Pronunciation,Pronounciaton,Pronounciasion,B,23
+English,"The boy, as well as his friends, _____ present.",were,are,is,have been,C,24
+English,"Choose the most suitable word: She was absent _____ illness.",because,because of,due,for,B,25
+English,"Choose the synonym of 'Hostile'.",Friendly,Aggressive,Peaceful,Calm,B,26
+English,"Choose the antonym of 'Accept'.",Receive,Reject,Admit,Approve,B,27
+English,"The idiom 'spill the beans' means to:",Cook food,Reveal a secret,Make a mistake,Waste resources,B,28
+English,"Choose the correct sentence.",Each of the boys have a book.,Each of the boys has a book.,Each of the boys were given a book.,Each of the boys have books.,B,29
+English,"Choose the word that best completes the sentence: The students were congratulated _____ their excellent performance.",for,on,at,with,B,30
+English,"Choose the synonym of 'Vast'.",Tiny,Huge,Narrow,Weak,B,31
+English,"Choose the opposite of 'Victory'.",Success,Failure,Achievement,Triumph,B,32
+English,"If he _____ harder, he would have passed.",studied,had studied,studies,has studied,B,33
+English,"Choose the correctly spelt word.",Embarrass,Embarass,Embaras,Embarras,A,34
+English,"The phrase 'look down on' means:",Admire,Despise,Observe,Encourage,B,35
+English,"Choose the correct option: Hardly had she arrived _____ it started raining.",when,than,then,that,A,36
+English,"Choose the word nearest in meaning to 'Brief'.",Long,Short,Wide,Thick,B,37
+English,"Choose the opposite of 'Optimistic'.",Hopeful,Positive,Pessimistic,Joyful,C,38
+English,"The committee _____ submitted its report.",have,has,were,are,B,39
+English,"Choose the word nearest in meaning to 'Meticulous'.",Careless,Thorough,Ignorant,Rough,B,40
+English,"Choose the opposite in meaning to 'Transparent'.",Visible,Clear,Opaque,Open,C,41
+English,"Complete the sentence: The manager insisted that every employee _____ on time.",is,was,be,has been,C,42
+English,"Choose the correctly spelt word.",Millenium,Millennium,Millenniume,Milleniam,B,43
+English,"Choose the most appropriate word: She is proficient _____ French.",at,in,on,with,B,44
+English,"The idiom 'hit the nail on the head' means to:",Miss the point,Speak exactly correctly,Work very hard,Hit something forcefully,B,45
+English,"Choose the synonym of 'Conceal'.",Reveal,Hide,Display,Announce,B,46
+English,"Choose the antonym of 'Flexible'.",Elastic,Adaptable,Rigid,Soft,C,47
+English,"Identify the grammatically correct sentence.",Neither of the girls have arrived.,Neither of the girls has arrived.,Neither of the girls are arriving.,Neither of the girls were arriving.,B,48
+English,"Choose the word that best completes the sentence: The speaker concluded his lecture _____ thanking the audience.",with,by,for,in,B,49
+Physics,"The SI unit of force is:",Joule,Newton,Watt,Pascal,B,0
+Physics,"A body moving with constant velocity has:",Constant acceleration,Zero acceleration,Increasing speed,Variable force,B,1
+Physics,"Which of the following is a vector quantity?",Distance,Speed,Velocity,Mass,C,2
+Physics,"The acceleration due to gravity on Earth is approximately:",8.9 m/s²,9.8 m/s²,10.8 m/s²,11.8 m/s²,B,3
+Physics,"Work is done when a force:",Acts on a body only,Changes the colour of a body,Moves a body through a distance,Increases the mass of a body,C,4
+Physics,"The SI unit of electrical resistance is:",Volt,Ohm,Ampere,Coulomb,B,5
+Physics,"Which instrument is used to measure electric current?",Voltmeter,Ammeter,Galvanometer,Hydrometer,B,6
+Physics,"The speed of light in a vacuum is approximately:",3 × 10⁶ m/s,3 × 10⁷ m/s,3 × 10⁸ m/s,3 × 10⁹ m/s,C,7
+Physics,"Which law states that for every action there is an equal and opposite reaction?",First law of motion,Second law of motion,Third law of motion,Law of gravitation,C,8
+Physics,"Power is defined as:",Force × Distance,Work × Time,Work done per unit time,Energy × Time,C,9
+Physics,"The frequency of a wave is measured in:",Metres,Hertz,Newtons,Seconds,B,10
+Physics,"A convex lens is mainly used to:",Disperse light,Focus light,Reflect light,Absorb light,B,11
+Physics,"The unit of electric power is:",Joule,Volt,Watt,Ohm,C,12
+Physics,"The density of a substance is the:",Mass × Volume,Mass per unit volume,Weight per unit area,Volume per unit mass,B,13
+Physics,"Which colour of light has the longest wavelength?",Violet,Blue,Green,Red,D,14
+Physics,"The energy possessed by a moving body is called:",Potential energy,Kinetic energy,Chemical energy,Electrical energy,B,15
+Physics,"If a car travels 150 km in 3 hours, its average speed is:",40 km/h,45 km/h,50 km/h,55 km/h,C,16
+Physics,"The image formed by a plane mirror is:",Real and inverted,Virtual and erect,Real and magnified,Virtual and inverted,B,17
+Physics,"The instrument used to measure atmospheric pressure is:",Thermometer,Hydrometer,Barometer,Hygrometer,C,18
+Physics,"The force that opposes motion between two surfaces in contact is:",Tension,Upthrust,Friction,Weight,C,19
+Physics,"The resultant of two equal forces acting in opposite directions is:",Zero,One force doubled,Half of one force,Twice one force,A,20
+Physics,"A body of mass 5 kg experiences an acceleration of 2 m/s². Calculate the force acting on it.",5 N,7 N,10 N,15 N,C,21
+Physics,"Which of the following is a poor conductor of electricity?",Copper,Aluminium,Rubber,Silver,C,22
+Physics,"The unit of potential difference is:",Ampere,Volt,Ohm,Watt,B,23
+Physics,"An object floating in water displaces water whose weight is:",Less than the object's weight,Equal to the object's weight,Greater than the object's weight,Zero,B,24
+Physics,"The energy stored in a stretched spring is:",Kinetic energy,Heat energy,Potential energy,Nuclear energy,C,25
+Physics,"Which of the following electromagnetic waves has the highest frequency?",Radio waves,Microwaves,X-rays,Gamma rays,D,26
+Physics,"The angle of incidence is equal to the angle of reflection according to:",Newton's First Law,Hooke's Law,Law of Reflection,Ohm's Law,C,27
+Physics,"A transformer operates on the principle of:",Electrostatic induction,Electromagnetic induction,Conduction,Convection,B,28
+Physics,"The time taken for one complete oscillation is called:",Frequency,Amplitude,Period,Wavelength,C,29
+Physics,"Which of the following quantities is measured in joules?",Power,Work,Pressure,Force,B,30
+Physics,"A fuse is connected in a circuit to:",Increase current,Reduce voltage,Protect against excess current,Store electric charge,C,31
+Physics,"Which of these is a renewable source of energy?",Coal,Petroleum,Solar energy,Natural gas,C,32
+Physics,"The pressure exerted by a liquid depends on:",Colour of the liquid,Density and depth,Shape of the container,Surface area only,B,33
+Physics,"If the frequency of a wave is doubled while its speed remains constant, the wavelength will:",Double,Remain the same,Be halved,Become zero,C,34
+Physics,"The process by which heat travels through a vacuum is:",Conduction,Convection,Radiation,Diffusion,C,35
+Physics,"Which instrument is used to detect electric charge?",Hydrometer,Electroscope,Barometer,Calorimeter,B,36
+Physics,"The refractive index of a medium is the ratio of:",Image distance to object distance,Real depth to apparent depth,Speed of light in vacuum to speed in the medium,Density to volume,C,37
+Physics,"Which particle carries a negative electric charge?",Proton,Neutron,Electron,Photon,C,38
+Physics,"The efficiency of a machine is always:",Greater than 100%,Equal to 100%,Less than or equal to 100%,Zero,C,39
+Physics,"A ray of light passing from air into glass bends towards the normal because:",Glass is denser than air,The speed of light decreases in glass,The wavelength increases in glass,The frequency changes,B,40
+Physics,"The S.I. unit of momentum is:",kg m/s²,kg m/s,N s⁻¹,Joule,B,41
+Physics,"A body weighs 98 N on Earth. Assuming g = 9.8 m/s², what is its mass?",9 kg,10 kg,11 kg,12 kg,B,42
+Physics,"Which of the following is not an electromagnetic wave?",Radio wave,Ultrasound,X-ray,Gamma ray,B,43
+Physics,"The lower fixed point on the Celsius scale is:",0 K,0°C,32°C,100°C,B,44
+Physics,"A concave mirror is commonly used as a shaving mirror because it:",Produces a diminished image,Produces an erect magnified image,Produces an inverted image,Produces no image,B,45
+Physics,"The time rate of change of momentum is equal to:",Power,Impulse,Force,Work,C,46
+Physics,"Which of the following materials is best suited for making permanent magnets?",Soft iron,Steel,Copper,Aluminium,B,47
+Physics,"A body moving in a circular path at constant speed possesses:",Linear acceleration only,Centripetal acceleration,No acceleration,Variable mass,B,48
+Physics,"Which of the following devices converts mechanical energy directly into electrical energy?",Electric motor,Generator,Transformer,Battery,B,49
+Chemistry,"The smallest particle of an element that retains its chemical properties is:",Atom,Molecule,Ion,Electron,A,0
+Chemistry,"Which of the following is a chemical change?",Melting of ice,Boiling of water,Rusting of iron,Dissolving sugar,C,1
+Chemistry,"The atomic number of an element is the number of:",Neutrons,Protons,Nucleons,Electrons and neutrons,B,2
+Chemistry,"Which of the following is an alkali?",Hydrochloric acid,Sodium hydroxide,Ammonium chloride,Carbon dioxide,B,3
+Chemistry,"The pH of a neutral solution at room temperature is:",0,5,7,14,C,4
+Chemistry,"The most abundant gas in the Earth's atmosphere is:",Oxygen,Carbon dioxide,Nitrogen,Hydrogen,C,5
+Chemistry,"Which of the following is a noble gas?",Chlorine,Nitrogen,Argon,Oxygen,C,6
+Chemistry,"The chemical formula of methane is:",CH₃,CH₄,C₂H₆,C₂H₄,B,7
+Chemistry,"The process by which a solid changes directly into a gas is called:",Condensation,Sublimation,Evaporation,Fusion,B,8
+Chemistry,"Which of the following is an example of a covalent compound?",Sodium chloride,Magnesium oxide,Water,Calcium oxide,C,9
+Chemistry,"The relative atomic mass of carbon is:",6,12,14,16,B,10
+Chemistry,"Avogadro's constant is approximately:",6.02 × 10²³,3.00 × 10⁸,9.81,1.60 × 10⁻¹⁹,A,11
+Chemistry,"Which indicator turns red in an acidic solution?",Litmus paper (blue),Methyl orange,Phenolphthalein,Universal indicator,B,12
+Chemistry,"The oxidation state of oxygen in most compounds is:",+2,-2,+1,-1,B,13
+Chemistry,"Which of the following metals reacts vigorously with cold water?",Copper,Iron,Sodium,Silver,C,14
+Chemistry,"The main constituent of natural gas is:",Ethane,Methane,Propane,Butane,B,15
+Chemistry,"The process of adding oxygen to a substance is known as:",Reduction,Oxidation,Neutralization,Hydrolysis,B,16
+Chemistry,"Which of the following is a strong acid?",Ethanoic acid,Carbonic acid,Hydrochloric acid,Citric acid,C,17
+Chemistry,"The gas evolved when zinc reacts with dilute hydrochloric acid is:",Oxygen,Hydrogen,Chlorine,Carbon dioxide,B,18
+Chemistry,"Which of the following is an unsaturated hydrocarbon?",Ethane,Propane,Ethene,Methane,C,19
+Chemistry,"The valency of oxygen is:",1,2,3,4,B,20
+Chemistry,"Which of the following is an acidic oxide?",Sodium oxide,Calcium oxide,Carbon dioxide,Magnesium oxide,C,21
+Chemistry,"The process of coating iron with zinc to prevent rusting is called:",Electrolysis,Galvanizing,Alloying,Smelting,B,22
+Chemistry,"Which of the following is used as the electrolyte in a lead-acid accumulator?",Dilute hydrochloric acid,Dilute sulphuric acid,Sodium hydroxide solution,Distilled water,B,23
+Chemistry,"The empirical formula of glucose (C₆H₁₂O₆) is:",CH₂O,C₂H₄O₂,C₆H₁₂O₆,CHO,A,24
+Chemistry,"The bond formed by the transfer of electrons is called:",Covalent bond,Metallic bond,Ionic bond,Hydrogen bond,C,25
+Chemistry,"Which of the following is an example of a homogeneous mixture?",Granite,Sand and water,Air,Oil and water,C,26
+Chemistry,"The gas responsible for the greenhouse effect among the options below is:",Hydrogen,Nitrogen,Carbon dioxide,Helium,C,27
+Chemistry,"The catalyst used in the Haber process is:",Nickel,Iron,Platinum,Copper,B,28
+Chemistry,"The product formed when an acid reacts with a base is:",Salt and water,Hydrogen only,Oxygen only,Carbon dioxide only,A,29
+Chemistry,"Which of the following has the highest electronegativity?",Chlorine,Fluorine,Oxygen,Nitrogen,B,30
+Chemistry,"The anode is the electrode where _____ occurs.",Reduction,Neutralization,Oxidation,Condensation,C,31
+Chemistry,"Which of the following is a property of acids?",They turn red litmus blue,They have a pH greater than 7,They react with metals to produce hydrogen,They feel slippery,C,32
+Chemistry,"The major constituent of limestone is:",Calcium carbonate,Sodium chloride,Calcium oxide,Magnesium carbonate,A,33
+Chemistry,"Which of the following is an organic compound?",Sodium chloride,Carbon dioxide,Ethanol,Ammonia,C,34
+Chemistry,"The process of converting a liquid into vapour is known as:",Condensation,Sublimation,Evaporation,Freezing,C,35
+Chemistry,"Which gas is liberated during the electrolysis of acidified water at the cathode?",Oxygen,Hydrogen,Chlorine,Nitrogen,B,36
+Chemistry,"The periodic table is arranged in order of increasing:",Atomic mass,Atomic number,Number of neutrons,Valency,B,37
+Chemistry,"The oxidation number of hydrogen in water is:",-1,+1,+2,0,B,38
+Chemistry,"Which of the following is a reducing agent?",Oxygen,Hydrogen peroxide,Carbon monoxide,Chlorine,C,39
+Chemistry,"Which of the following is an amphoteric oxide?",Sodium oxide,Calcium oxide,Aluminium oxide,Carbon dioxide,C,40
+Chemistry,"The gas produced when a carbonate reacts with a dilute acid is:",Hydrogen,Oxygen,Carbon dioxide,Chlorine,C,41
+Chemistry,"Which of the following metals is extracted by electrolysis?",Iron,Zinc,Copper,Aluminium,D,42
+Chemistry,"The functional group present in alcohols is:",–COOH,–OH,–CHO,–NH₂,B,43
+Chemistry,"Which of the following substances is used to soften temporary hard water?",Sodium chloride,Calcium carbonate,Calcium hydroxide,Potassium nitrate,C,44
+Chemistry,"A solution with a pH of 2 is:",Neutral,Weakly alkaline,Strongly acidic,Weakly acidic,C,45
+Chemistry,"Which of the following is an allotrope of carbon?",Quartz,Graphite,Hematite,Gypsum,B,46
+Chemistry,"The main ore of iron is:",Bauxite,Hematite,Cassiterite,Galena,B,47
+Chemistry,"Which of the following gases decolorizes acidified potassium manganate(VII) solution?",Oxygen,Carbon dioxide,Sulphur dioxide,Nitrogen,C,48
+Chemistry,"The IUPAC name of CH₃COOH is:",Methanoic acid,Ethanoic acid,Propanoic acid,Butanoic acid,B,49

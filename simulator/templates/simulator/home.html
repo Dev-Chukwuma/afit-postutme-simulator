@@ -1,0 +1,95 @@
+{% extends 'simulator/base.html' %}
+{% block title %}AFIT CBT Simulator{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<div class="card card-glow text-center" style="padding: 60px 32px;">
+    <h1 style="font-size: 2.2rem; margin-bottom: 12px;">
+        🎖️ AFIT Post-UTME CBT Simulator
+    </h1>
+
+    <p style="font-size: 1rem; max-width: 600px; margin: 0 auto 28px;">
+        Practice like the real exam. Randomized questions, strict timing, instant results, and accurate aggregate prediction.
+    </p>
+
+    <a href="/login/" class="btn btn-primary btn-lg">Start Practicing →</a>
+</div>
+
+<!-- STATS -->
+<div class="card" style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+    <div class="text-center">
+        <h2>200+</h2>
+        <p>Questions</p>
+    </div>
+
+    <div class="text-center">
+        <h2>9+</h2>
+        <p>Subjects</p>
+    </div>
+
+    <div class="text-center">
+        <h2>∞</h2>
+        <p>Random Papers</p>
+    </div>
+
+    <div class="text-center">
+        <h2>30min</h2>
+        <p>Exam Timer</p>
+    </div>
+</div>
+
+<!-- FEATURES -->
+<div class="card">
+    <h2 class="mb-16">✨ Features</h2>
+    <ul style="line-height: 2;">
+        <li>✔ Real CBT exam experience</li>
+        <li>✔ 30-minute strict timer</li>
+        <li>✔ Instant scoring system</li>
+        <li>✔ Automatic aggregate calculation</li>
+        <li>✔ Mobile-friendly interface</li>
+        <li>✔ Integrated Calculator</li>
+    </ul>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="card">
+    <h2 class="mb-16">🎯 How it works</h2>
+    <ol style="line-height: 2;">
+        <li>Create an account</li>
+        <li>Enter your JAMB score & course</li>
+        <li>Take the CBT exam</li>
+        <li>View and download your result</li>
+        <li>Review your result answers</li>
+    </ol>
+</div>
+
+<!-- COURSES -->
+<div class="card">
+    <h2 class="mb-16">🏆 Courses Supported</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <span class="badge badge-blue">Computer Science</span>
+        <span class="badge badge-blue">Electrical Engineering</span>
+        <span class="badge badge-blue">Mechanical Engineering</span>
+        <span class="badge badge-blue">Civil Engineering</span>
+        <span class="badge badge-blue">Mathematics</span>
+        <span class="badge badge-blue">Physics</span> <br>
+        <p>And many more</p>
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="card card-glow text-center">
+    <h2>Ready to test yourself?</h2>
+    <p class="mt-8 mb-16">Take a full AFIT-style CBT simulation now.</p>
+    <a href="/register/" class="btn btn-primary btn-lg">Get Started</a>
+</div>
+
+<!-- FOOTER -->
+<div class="text-center mt-24 text-muted text-sm">
+    <p>AFIT CBT Simulator • Built for AFIT Aspirants</p>
+    <p class="mt-8">Disclaimer: Not affiliated with AFIT official examination board</p>
+    <p>Built and powered by Chuks dev • Secured by Django Auth Login</p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'simulator/base.html' %}
+{% block title %}Review - AFIT Simulator{% endblock %}
+
+{% block content %}
+<div style="max-width: 780px; margin: 0 auto;">
+
+    <div class="flex items-center justify-between mb-24">
+        <div>
+            <h1>Exam Review</h1>
+            <p class="mt-8 text-muted">See where you went wrong and what you got right</p>
+        </div>
+        <div class="flex gap-10">
+            <a href="/result/{{ result.id }}/" class="btn btn-ghost">← Back to Result</a>
+            <a href="/exam/" class="btn btn-primary">Retry Exam</a>
+        </div>
+    </div>
+
+    <!-- Summary Bar -->
+    <div class="card card-glow" style="margin-bottom: 28px;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center;">
+            <div>
+                <p class="text-muted text-sm">Score</p>
+                <p style="font-size: 1.8rem; font-weight: 800; color: var(--blue-light); margin-top: 6px;">{{ result.postutme_score }}/50</p>
+            </div>
+            <div style="border-left: 1px solid var(--border); border-right: 1px solid var(--border);">
+                <p class="text-muted text-sm">Aggregate</p>
+                <p style="font-size: 1.8rem; font-weight: 800; color: var(--blue-light); margin-top: 6px;">{{ result.aggregate }}/100</p>
+            </div>
+            <div>
+                <p class="text-muted text-sm">Date</p>
+                <p style="font-size: 1rem; font-weight: 700; margin-top: 6px;">{{ result.date_taken|date:"d M Y" }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex gap-10 mb-24">
+        <button onclick="filterQuestions('all')" class="btn btn-outline active-filter" id="filter-all">All</button>
+        <button onclick="filterQuestions('correct')" class="btn btn-outline" id="filter-correct">✅ Correct</button>
+        <button onclick="filterQuestions('wrong')" class="btn btn-outline" id="filter-wrong">❌ Wrong</button>
+    </div>
+
+    <!-- Questions -->
+    {% for item in review_data %}
+    <div class="card review-card {% if item.is_correct %}correct-card{% else %}wrong-card{% endif %}"
+         style="margin-bottom: 16px; border-left: 4px solid {% if item.is_correct %}#22c55e{% else %}#ef4444{% endif %};">
+
+        <div class="flex items-center justify-between mb-16">
+            <div class="flex items-center gap-10">
+                <span class="badge badge-blue">Q{{ forloop.counter }}</span>
+                <span class="badge" style="background: rgba(99,102,241,0.1); color: #818cf8; border: 1px solid rgba(99,102,241,0.2);">
+                    {{ item.subject }}
+                </span>
+            </div>
+            {% if item.is_correct %}
+                <span class="badge badge-green">✅ Correct</span>
+            {% else %}
+                <span class="badge badge-red">❌ Wrong</span>
+            {% endif %}
+        </div>
+
+        <p style="font-size: 1rem; font-weight: 500; color: var(--text); margin-bottom: 20px; line-height: 1.6;">
+            {{ item.question }}
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+             {% for letter, text in item.options %}
+            <div class="option-box"
+                style="
+                    display: flex; align-items: center; gap: 12px;
+                    padding: 12px 16px; border-radius: 10px; font-size: 0.9rem;
+                    border: 1px solid
+                    {% if letter == item.correct %}#22c55e
+                    {% elif letter == item.selected and not item.is_correct %}#ef4444
+                    {% else %}var(--border){% endif %};
+                    background:
+                    {% if letter == item.correct %}rgba(34,197,94,0.1)
+                    {% elif letter == item.selected and not item.is_correct %}rgba(239,68,68,0.1)
+                    {% else %}transparent{% endif %};
+                    color:
+                    {% if letter == item.correct %}#4ade80
+                    {% elif letter == item.selected and not item.is_correct %}#f87171
+                    {% else %}var(--text-subtle){% endif %};
+                ">
+                <span style="width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8rem; flex-shrink:0;
+                    background:
+                    {% if letter == item.correct %}#22c55e
+                    {% elif letter == item.selected and not item.is_correct %}#ef4444
+                    {% else %}var(--surface){% endif %};
+                    color: {% if letter == item.correct or letter == item.selected %}white{% else %}var(--blue-light){% endif %};">
+                    {{ letter }}
+                </span>
+                <span>{{ text }}</span>
+                {% if letter == item.correct %}<span style="margin-left:auto;">✅</span>{% endif %}
+                {% if letter == item.selected and not item.is_correct %}<span style="margin-left:auto;">❌</span>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if not item.is_correct %}
+        <div style="margin-top: 16px; padding: 12px 16px; background: rgba(34,197,94,0.07); border-radius: 8px; border: 1px solid rgba(34,197,94,0.15);">
+            <p style="font-size: 0.85rem; color: #4ade80;">
+                ✅ Correct Answer: <strong>{{ item.correct }}</strong>
+            </p>
+        </div>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+
+</div>
+
+<script>
+    function filterQuestions(type) {
+        const cards = document.querySelectorAll('.review-card');
+        cards.forEach(card => {
+            if (type === 'all') card.style.display = 'block';
+            else if (type === 'correct') card.style.display = card.classList.contains('correct-card') ? 'block' : 'none';
+            else if (type === 'wrong') card.style.display = card.classList.contains('wrong-card') ? 'block' : 'none';
+        });
+
+        document.querySelectorAll('[id^="filter-"]').forEach(btn => btn.style.background = 'transparent');
+        document.getElementById(`filter-${type}`).style.background = 'rgba(59,130,246,0.15)';
+    }
+</script>
+{% endblock %}

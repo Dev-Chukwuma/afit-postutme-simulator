@@ -1,0 +1,67 @@
+
+{% extends 'simulator/base.html' %}
+{% block title %}Register - AFIT Simulator{% endblock %}
+
+{% block content %}
+<div style="max-width: 520px; margin: 0 auto;">
+
+    <div class="text-center mb-24">
+        <h1>Create Account</h1>
+        <p class="mt-8">Join thousands of AFIT aspirants practising daily</p>
+    </div>
+
+    <div class="card card-glow">
+        <form method="POST">
+            {% csrf_token %}
+
+            <h3 class="mb-16">Personal Details</h3>
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="full_name" placeholder="e.g. Chukwudi Emmanuel" required>
+            </div>
+
+            <div class="form-group">
+
+                <label>JAMB Score</label>
+                <input type="number" name="jamb_score" placeholder="e.g. 280" min="0" max="400" required>
+            </div>
+
+            <div class="form-group">
+                <label>Aspiring Course</label>
+                <select name="aspiring_course" required>
+                    <option value="" disabled selected>Select your course</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Electrical Engineering">Electrical Engineering</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Mathematics">Mathematics</option>
+                </select>
+            </div>
+
+            <div class="divider">Login Details</div>
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Choose a username" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+
+                <input type="password" name="password" placeholder="Choose a password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full btn-lg mt-16">
+                Create Account →
+            </button>
+
+            <p class="text-center text-sm text-muted mt-16">
+                Already have an account?
+                <a href="/login/" class="text-blue" style="text-decoration: none; font-weight: 600;">Login</a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

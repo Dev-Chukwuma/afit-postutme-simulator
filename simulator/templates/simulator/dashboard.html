@@ -1,0 +1,98 @@
+{% extends 'simulator/base.html' %}
+{% block title %}Dashboard - AFIT 
+
+Simulator{% endblock %}
+
+{% block content %}
+
+<!-- Welcome -->
+<div class="flex items-center justify-between mb-24">
+    <div>
+        <h1>Hey, {{ profile.full_name.split.0 }} 👋</h1>
+        <p class="mt-8">{{ profile.aspiring_course }} • JAMB: {{ profile.jamb_score }}</p>
+    </div>
+    <a href="/exam/" class="btn btn-primary btn-lg">Start Exam →</a>
+</div>
+
+<!-- Stats Row -->
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px;">
+    <div class="card text-center" style="margin-bottom: 0;">
+        <p class="text-muted text-sm">JAMB Score</p>
+        <h1 style="font-size: 2.2rem; color: var(--blue-light); margin-top: 8px;">{{ profile.jamb_score }}</h1>
+        <p class="text-muted text-sm">out of 400</p>
+    </div>
+
+    <div class="card text-center" style="margin-bottom: 0;">
+        <p class="text-muted text-sm">Best Aggregate</p>
+        <h1 style="font-size: 2.2rem; color: var(--blue-light); margin-top: 8px;">
+            {% if last_result %}{{ last_result.aggregate }}{% else %}--{% endif %}
+
+        </h1>
+        <p class="text-muted text-sm">out of 100</p>
+    </div>
+
+    <div class="card text-center" style="margin-bottom: 0;">
+        <p class="text-muted text-sm">Total Attempts</p>
+        <h1 style="font-size: 2.2rem; color: var(--blue-light); margin-top: 8px;">{{ total_attempts }}</h1>
+        <p class="text-muted text-sm">exams taken</p>
+    </div>
+</div>
+
+<!-- Last Result + Leaderboard -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+
+    <!-- Recent Attempts -->
+    <div class="card" style="margin-bottom: 0;">
+        <h2 class="mb-16">Recent Attempts</h2>
+        {% if results %}
+            {% for r in results %}
+            <div class="flex items-center justify-between" style="padding: 12px 0; border-bottom: 1px solid var(--border);">
+                <div>
+                    <p class="font-bold" style="font-size: 0.9rem;">{{ r.date_taken|date:"d M Y" }}</p>
+                    <p class="text-muted text-sm">Post-UTME: {{ r.postutme_score }}/50</p>
+                </div>
+                <div class="text-right">
+                    <span class="badge {% if r.aggregate >= 60 %}badge-green{% elif 
+
+r.aggregate >= 50 %}badge-blue{% else %}badge-red{% endif %}">
+                        {{ r.aggregate }}/100
+                    </span>
+                    <br>
+                    <a href="/result/{{ r.id }}/" class="text-blue text-sm" style="text-decoration: none; margin-top: 4px; display: inline-block;">View</a>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="text-center" style="padding: 40px 0;">
+                <p class="text-muted">No exams taken yet</p>
+                <a href="/exam/" class="btn btn-outline mt-16">Take your first exam</a>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="card" style="margin-bottom: 0;">
+        <h2 class="mb-16">🏆 Leaderboard</h2>
+        {% for entry in leaderboard %}
+        <div class="flex items-center justify-between" style="padding: 12px 0; border-bottom: 1px solid var(--border);">
+            <div class="flex items-center gap-10">
+                <span style="font-size: 0.85rem; font-weight: 800; color: {% if forloop.counter == 1 %}#fbbf24{% elif forloop.counter == 2 %}#94a3b8{% elif forloop.counter == 3 %}#b45309{% else %}var(--text-muted){% endif %}; width: 24px;">
+                    {% if forloop.counter == 1 %}🥇
+
+                    {% elif forloop.counter == 2 %}🥈
+                    {% elif forloop.counter == 3 %}🥉
+                    {% else %}{{ forloop.counter }}{% endif %}
+                </span>
+                <div>
+                    <p style="font-size: 0.9rem; font-weight: 600;">{{ entry.user__profile__full_name }}</p>
+                    <p class="text-muted text-sm">@{{ entry.user__username }}</p>
+                </div>
+            </div>
+            <span class="badge badge-blue">{{ entry.best }}/100</span>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,426 @@
+{% extends 'simulator/base.html' %}
+{% block title %}Exam - AFIT Simulator{% endblock %}
+
+
+{% block content %}
+<form method="POST" id="examForm">
+    {% csrf_token %}
+
+    <!-- Sticky Header -->
+    <div style="position: sticky; top: 73px; z-index: 99; background: rgba(5,13,26,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 32px;">
+        <div class="flex items-center justify-between">
+            <div>
+                <h2 style="margin-bottom: 4px;">AFIT Post-UTME</h2>
+                <p class="text-muted text-sm">Answer all 50 questions</p>
+            </div>
+            <div class="flex items-center gap-20">
+
+                <!-- Strikes -->
+                <div class="text-center">
+                    <p class="text-muted text-sm mb-8">Strikes</p>
+                    <div id="strikes" style="font-size: 1.4rem;">⚪⚪⚪</div>
+                </div>
+                <div class="text-center">
+                    <p class="text-muted text-sm mb-8">Time Left</p>
+                    <div id="timer" style="font-size: 1.6rem; font-weight: 800; color: var(--blue-light); font-variant-numeric: tabular-nums;">30:00</div>
+                </div>
+                <button type="button" onclick="confirmSubmit()" class="btn btn-primary btn-lg">Submit Exam →</button>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div style="margin-top: 14px; background: var(--border); border-radius: 4px; height: 4px;">
+            <div id="progressBar" style="height: 4px; background: var(--blue); border-radius: 4px; width: 0%; transition: width 0.3s;"></div>
+        </div>
+    </div>
+
+    <!-- Questions -->
+    {% for question in questions %}
+    <div class="card" style="margin-bottom: 16px;" id="qcard-{{ forloop.counter }}">
+        <div class="flex items-center gap-10 mb-16">
+            <span class="badge badge-blue">Q{{ forloop.counter }}</span>
+            {% if forloop.counter <= 10 %}
+                <span class="badge" 
+
+style="background: rgba(168,85,247,0.1); color: #c084fc; border: 1px solid rgba(168,85,247,0.2);">Mathematics</span>
+            {% elif forloop.counter <= 20 %}
+                <span class="badge" style="background: rgba(20,184,166,0.1); color: #2dd4bf; border: 1px solid rgba(20,184,166,0.2);">English</span>
+            {% elif forloop.counter <= 30 %}
+                <span class="badge" style="background: rgba(249,115,22,0.1); color: #fb923c; border: 1px solid rgba(249,115,22,0.2);">Chemistry</span>
+            {% elif forloop.counter <= 40 %}
+                <span class="badge" style="background: rgba(234,179,8,0.1); color: #facc15; border: 1px solid rgba(234,179,8,0.2);">Physics</span>
+            {% else %}
+                <span class="badge badge-green">Course</span>
+
+            {% endif %}
+        </div>
+
+        <p style="font-size: 1rem; font-weight: 500; color: var(--text); margin-bottom: 20px; line-height: 1.6;">
+            {{ question.question_text }}
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            {% for letter, text in question.shuffled_options %}
+            <label class="option-label" for="q{{ question.id }}_{{ letter }}">
+                <input type="radio" name="q{{ question.id }}" id="q{{ question.id }}_{{ letter }}" value="{{ letter }}" style="display:none;" onchange="updateProgress()">
+                <div class="option-box">
+
+                    <span class="option-letter">{{ letter }}</span>
+                    <span>{{ text }}</span>
+                </div>
+            </label>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="text-center" style="margin-top: 32px;">
+        <button type="button" onclick="confirmSubmit()" class="btn btn-primary btn-lg">Submit Exam →</button>
+        <p class="text-muted text-sm mt-16">Make sure you've answered all questions before submitting</p>
+    </div>
+</form>
+
+<!-- Confirm Submit Modal -->
+<div id="confirmModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
+    <div class="card" style="max-width:420px; width:90%; text-align:center; padding:40px;">
+        <h2 style="margin-bottom:12px;">Submit Exam?</h2>
+        <p class="text-muted" style="margin-bottom:28px;">Are you sure you want to submit? You cannot change your answers after this.</p>
+        <div class="flex gap-10" style="justify-content:center;">
+            <button onclick="hideModal()" class="btn btn-ghost">Go Back</button>
+            <button onclick="submitExam()" class="btn btn-primary">Yes, Submit</
+
+button>
+        </div>
+    </div>
+</div>
+
+<!-- Strike Warning Modal -->
+<div id="strikeModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:1000; align-items:center; justify-content:center;">
+    <div class="card" style="max-width:420px; width:90%; text-align:center; padding:40px; border-color: #ef4444;">
+        <h2 style="margin-bottom:12px; color:#ef4444;">⚠️ Warning!</h2>
+        <p id="strikeMessage" class="text-muted" style="margin-bottom:28px;"></p>
+        <button onclick="dismissStrike()" class="btn btn-danger">I Understand</button>
+
+    </div>
+</div>
+
+<style>
+    .option-label { cursor: pointer; }
+
+    .option-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        transition: all 0.15s;
+        font-size: 0.9rem;
+        color: var(--text-subtle);
+    }
+
+    .option-box:hover {
+        border-color: var(--blue);
+        background: rgba(59, 130, 246, 0.05);
+
+        color: var(--text);
+    }
+
+    .option-letter {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        color: var(--blue-light);
+    }
+
+    input[type="radio"]:checked + .option-box {
+        border-color: var(--blue);
+
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--text);
+    }
+
+    input[type="radio"]:checked + .option-box .option-letter {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: white;
+    }
+</style>
+
+<script>
+    // ── FULLSCREEN ──
+    function enterFullscreen() {
+        const el = document.documentElement;
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+
+        else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+    }
+    enterFullscreen();
+
+    // ── STRIKES ──
+    let strikes = 0;
+    const maxStrikes = 3;
+    const strikeIcons = ['⚪⚪⚪', '🔴⚪⚪', '🔴🔴⚪', '🔴🔴🔴'];
+
+    function addStrike(reason) {
+        strikes++;
+        document.getElementById('strikes').textContent = strikeIcons[strikes];
+        const msg = document.getElementById('strikeMessage');
+
+        if (strikes >= maxStrikes) {
+
+            msg.textContent = 'You have used all 3 strikes. Your exam is being submitted now!';
+            document.getElementById('strikeModal').style.display = 'flex';
+            setTimeout(() => submitExam(), 3000);
+        } else {
+            msg.textContent = `Strike ${strikes}/3: ${reason}. ${maxStrikes - strikes} strike(s) remaining before auto-submit!`;
+            document.getElementById('strikeModal').style.display = 'flex';
+        }
+    }
+
+    function dismissStrike() {
+        document.getElementById('strikeModal').style.display = 'none';
+        if (strikes < maxStrikes) enterFullscreen();
+    }
+
+    // Detect fullscreen exit
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+            addStrike('You exited fullscreen');
+        }
+    });
+
+    // Detect tab switching / window blur
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            addStrike('You switched tabs or minimised the window');
+
+        }
+    });
+
+    // ── TIMER ──
+    let duration = {{ duration }} * 60;
+    const timerEl = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+        const mins = Math.floor(duration / 60);
+        const secs = duration % 60;
+        timerEl.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+        if (duration <= 300) timerEl.style.color = '#f87171';
+        if (duration <= 0) {
+            clearInterval(countdown);
+            submitExam(); // auto submit without CSRF error
+        }
+
+        duration--;
+    }, 1000);
+
+    // ── SUBMIT ──
+    function confirmSubmit() {
+        document.getElementById('confirmModal').style.display = 'flex';
+    }
+
+    function hideModal() {
+        document.getElementById('confirmModal').style.display = 'none';
+    }
+
+    function submitExam() {
+        document.getElementById('confirmModal').style.display = 'none';
+        
+
+document.getElementById('examForm').submit();
+    }
+
+    // ── PROGRESS ──
+    const total = {{ questions|length }};
+    function updateProgress() {
+        const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+        document.getElementById('progressBar').style.width = `${(answered / total) * 100}%`;
+    }
+</script>
+
+<!-- Calculator Button -->
+<div style="position: fixed; bottom: 30px; right: 30px; z-index: 500;">
+    <button onclick="toggleCalc()" class="btn btn-primary" style="width: 56px; height: 56px; border-radius: 50%; font-size: 1.3rem; padding: 0; box-shadow: 0 4px 20px rgba(59,130,246,0.4);">
+        🧮
+    </button>
+</div>
+
+<!-- Calculator -->
+<div id="calculator" style="display:none; position:fixed; bottom:100px; right:30px; z-index:500; width:280px;">
+    <div class="card" style="padding: 20px; border-color: rgba(59,130,246,0.4); box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-16">
+            <h3 style="color: var(--blue-light);">Calculator</h3>
+            <button onclick="toggleCalc()" style="background:none; border:none; color: var(--text-muted); font-size:1.2rem; cursor:pointer;">✕</button>
+        </div>
+
+        <!-- Display -->
+        <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; text-align: right;">
+            <div id="calc-expression" style="font-size: 0.75rem; color: var(--text-muted); min-height: 18px; margin-bottom: 4px;"></div>
+
+            <div id="calc-display" style="font-size: 1.8rem; font-weight: 700; color: var(--text); word-break: break-all;">0</div>
+        </div>
+
+        <!-- Buttons -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+            <!-- Row 1 -->
+            <button onclick="calcClear()" class="calc-btn calc-btn-danger" style="grid-column: span 2;">AC</button>
+            <button onclick="calcInput('/')" class="calc-btn calc-btn-op">÷</button>
+            <button onclick="calcBackspace()" class="calc-btn calc-btn-op">⌫</button>
+
+            <!-- Row 2 -->
+            <button onclick="calcInput('7')" class="calc-btn">7</button>
+
+            <button onclick="calcInput('8')" class="calc-btn">8</button>
+            <button onclick="calcInput('9')" class="calc-btn">9</button>
+            <button onclick="calcInput('*')" class="calc-btn calc-btn-op">×</button>
+
+            <!-- Row 3 -->
+            <button onclick="calcInput('4')" class="calc-btn">4</button>
+            <button onclick="calcInput('5')" class="calc-btn">5</button>
+            <button onclick="calcInput('6')" class="calc-btn">6</button>
+            <button onclick="calcInput('-')" class="calc-btn calc-btn-op">−</button>
+
+            <!-- Row 4 -->
+            <button onclick="calcInput('1')" class="calc-btn">1</button>
+            <button onclick="calcInput('2')" 
+
+class="calc-btn">2</button>
+            <button onclick="calcInput('3')" class="calc-btn">3</button>
+            <button onclick="calcInput('+')" class="calc-btn calc-btn-op">+</button>
+
+            <!-- Row 5 -->
+            <button onclick="calcInput('0')" class="calc-btn" style="grid-column: span 2;">0</button>
+            <button onclick="calcInput('.')" class="calc-btn">.</button>
+            <button onclick="calcEquals()" class="calc-btn calc-btn-primary">=</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .calc-btn {
+
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        transition: all 0.15s;
+    }
+
+    .calc-btn:hover {
+        background: var(--surface-hover);
+        border-color: var(--blue);
+    }
+
+    .calc-btn-op {
+        color: var(--blue-light);
+        border-color: rgba(59,130,246,0.2);
+        background: rgba(59,130,246,0.05);
+
+    }
+
+    .calc-btn-primary {
+        background: var(--blue);
+        color: white;
+        border-color: var(--blue);
+    }
+
+    .calc-btn-primary:hover { background: #2563eb; }
+
+    .calc-btn-danger {
+        background: rgba(239,68,68,0.1);
+        color: #f87171;
+        border-color: rgba(239,68,68,0.2);
+    }
+
+    .calc-btn-danger:hover { background: rgba(239,68,68,0.2); }
+</style>
+
+<script>
+    // ── CALCULATOR ──
+    let calcValue = '0';
+    let calcExpression = '';
+    let calcJustEvaled = false;
+
+    function toggleCalc() {
+        const calc = document.getElementById('calculator');
+        calc.style.display = calc.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function updateDisplay() {
+        document.getElementById('calc-display').textContent = calcValue;
+        document.getElementById('calc-expression').textContent = calcExpression;
+    }
+
+    function calcInput(val) {
+
+        const ops = ['+', '-', '*', '/'];
+
+        if (calcJustEvaled && !ops.includes(val)) {
+            calcValue = val;
+            calcExpression = '';
+            calcJustEvaled = false;
+        } else if (ops.includes(val)) {
+            calcExpression = calcValue + ' ' + (val === '*' ? '×' : val === '/' ? '÷' : val);
+            calcJustEvaled = false;
+            calcValue = '0';
+        } else {
+            if (val === '.' && calcValue.includes('.')) return;
+            calcValue = calcValue === '0' ? val : calcValue + val;
+            calcJustEvaled = false;
+        }
+
+        updateDisplay();
+
+    }
+
+    function calcEquals() {
+        try {
+            const expr = calcExpression.replace('×', '*').replace('÷', '/');
+            const full = expr + ' ' + calcValue;
+            const result = Function('"use strict"; return (' + full + ')')();
+            calcExpression = full + ' =';
+            calcValue = String(parseFloat(result.toFixed(10)));
+            calcJustEvaled = true;
+        } catch {
+            calcValue = 'Error';
+        }
+        updateDisplay();
+    }
+
+    function calcClear() {
+
+        calcValue = '0';
+        calcExpression = '';
+        calcJustEvaled = false;
+        updateDisplay();
+    }
+
+    function calcBackspace() {
+        if (calcValue.length <= 1 || calcValue === 'Error') {
+            calcValue = '0';
+        } else {
+            calcValue = calcValue.slice(0, -1);
+        }
+        updateDisplay();
+    }
+</script>
+
+
+{% endblock %}
