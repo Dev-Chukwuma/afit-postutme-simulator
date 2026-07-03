@@ -120,5 +120,30 @@ sm">Aspiring Course</p>
         window.location.href = "/download/{{ result.id }}/";
     }, 2000);
 </script>
+<style>
+@media (max-width: 768px) {
+    div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    div[style*="font-size: 5rem"] {
+        font-size: 3.5rem !important;
+    }
+
+    .flex.gap-10 {
+        flex-direction: column !important;
+    }
+
+    .flex.gap-10 a {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+</style>
 
 {% endblock %}
