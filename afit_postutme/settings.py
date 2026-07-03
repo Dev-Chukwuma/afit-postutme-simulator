@@ -144,4 +144,4 @@ DATABASES = {
     )
 }
 
-CSRF_TRUSTED_ORIGINS = ['afit-postutme-simulator-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://afit-postutme-simulator-production.up.railway.app']
