@@ -143,3 +143,5 @@ DATABASES = {
         default=f'sqlite:///{BASE_DIR}/db.sqlite3'
     )
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://afit-postutme-simulator-production.up.railway.app']

@@ -123,4 +123,20 @@
         document.getElementById(`filter-${type}`).style.background = 'rgba(59,130,246,0.15)';
     }
 </script>
+<style>
+@media (max-width: 768px) {
+    div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    .flex.items-center.justify-between {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+</style>
 {% endblock %}
