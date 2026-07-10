@@ -7,6 +7,7 @@
     {% csrf_token %}
 
     <!-- Sticky Header -->
+     <marquee behavior="" direction=""><p>They are 3 strikes in this exam, usage of all 3 strikes will result in automatic submission of the exam usage of strkes include minimizing, or switching tabs etc</p></marquee>
     <div style="position: sticky; top: 73px; z-index: 99; background: rgba(5,13,26,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 32px;">
         <div class="flex items-center justify-between">
             <div>
@@ -50,7 +51,7 @@ style="background: rgba(168,85,247,0.1); color: #c084fc; border: 1px solid rgba(
             {% elif forloop.counter <= 40 %}
                 <span class="badge" style="background: rgba(234,179,8,0.1); color: #facc15; border: 1px solid rgba(234,179,8,0.2);">Physics</span>
             {% else %}
-                <span class="badge badge-green">Course</span>
+                <span class="badge badge-green">Aspring course</span>
 
             {% endif %}
         </div>
